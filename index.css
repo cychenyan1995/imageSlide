@@ -1,0 +1,160 @@
+ * {
+     padding: 0;
+     margin: 0;
+ }
+
+ body {
+     background: #fff;
+     color: #555;
+     font-family: 'Avenir Next', 'Lantinghei SC';
+     font-size: 14px;
+ }
+/*先整理出样式的结构*/
+ .wrap {
+     width: 100%;
+     height: 600px;
+     background-color: #333;
+     /*设置垂直居中 start*/
+     position: absolute;
+     top: 50%;
+     /*设置为高度的一半*/
+     margin-top: -300px;
+     /*设置垂直居中 end*/
+     overflow: hidden;
+     /*子元素有3D效果*/
+     -webkit-perspective:800px;
+ }
+
+ /*海报样式*/
+ .photo {
+     width: 260px;
+     height: 320px;
+     position: absolute;
+     z-index: 1;
+     /*rgba(0,0,0,.01)黑色  透明度是0.01*/
+     box-shadow: 0 0 1px rgba(0, 0, 0, .01);
+ }
+
+ /*photo 里面的side*/
+ .photo .side {
+     width: 100%;
+     height: 100%;
+     background-color: #eee;
+     position: absolute;
+     top: 0;
+     right: 0;
+     padding: 20px;
+     /*包含边框等*/
+     box-sizing: border-box;
+ }
+
+ .photo .side-font {}
+
+ .photo .side-font .image {
+     width: 100%;
+     height: 250px;
+     /*当图片高度不足250px时，会垂直居中*/
+     line-height: 250px;
+     overflow: hidden;
+ }
+
+ .photo .side-font .image img {
+     /*设置100%  是针对上一级的 宽度而言*/
+     width: 100%;
+     height: 100%;
+ }
+
+ .photo .side-font .caption {
+     text-align: center;
+     font-size: 16px;
+     line-height: 50px;
+ }
+
+ /*visibility: hidden; 元素还要占用位置*/
+ .photo .side-back {
+     /* display: none;*/
+ }
+
+ .photo .side-back .desc {
+     color: #666;
+     font-size: 14px;
+     /*行高设为字体的1.5倍*/
+     line-height: 1.5em;
+ }
+
+ .photo-center {
+     /*   设置水平垂直居中
+    1.position: absolute; 设置absolute
+    width: 260px;  
+    height: 320px;
+      */
+    /*2.设置50%*/
+     left: 50%;
+     top: 50%;
+     /*设置对应的margin为高度宽度的负一半*/
+     margin: -160px 0 0 -130px;
+     /*不会被挡*/
+     z-index: 999;
+ }
+/*旋转*/
+ .photo-wrap{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-transform-style:preserve-3d;
+  /*第一个参数是对应的属性  高度  宽度等*/
+  -webkit-transition:all .6s; 
+ }
+ .photo-wrap .side-font{
+  /*webkit在谷歌下支持*/
+  -webkit-transform:rotateY(0deg);
+ }
+ .photo-wrap .side-back{
+  -webkit-transform:rotateY(180deg);
+ }
+ .photo-wrap .side{
+  -webkit-backface-visibility:hidden;
+ }
+ .photo-front .photo-wrap{
+  -webkit-transform:rotateY(0deg);
+ }
+ .photo-back .photo-wrap{
+  -webkit-transform:rotateY(180deg);
+ }
+
+ /*导航的样式*/
+ .nav{
+    width:80%;
+    position: absolute;
+    /*水平居中*/
+    left:10%;
+    bottom: 20px;
+    height:30px;
+    line-height: 30px;
+    z-index: 999;
+    background-color: #fff;
+    text-align: center;
+ }
+ /*普通样式*/
+ .nav .i{
+    width: 30px;
+    height: 30px;
+    /*行内元素设置宽高無效*/
+    display: inline-block;
+    background-color: #aaa;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+    -webkit-transform:scale(.48);
+ }
+ /*当前样式*/
+ .nav .i-curr{
+    -webkit-transform:scale(1);
+    background:url(images/icon1.png) center center no-repeat #aaa;
+ }
+ .nav .i-back{
+    -webkit-transform:rotateY(-180deg);
+    background-color: #555;
+ }
+
+ /*css命名  中劃線*/

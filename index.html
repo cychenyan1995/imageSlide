@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>海报画廊</title>
+</head>
+<link rel="stylesheet" type="text/css" href="index.css">
+<body onselectstart="return false;">
+    <div class="wrap" id="wrap">
+        <div class="photo photo-front" id="image-{{index}}" onclick="turn(this)">
+            <div class="photo-wrap">
+                <div class="side side-font">
+                    <!-- 1.构建模板字符串 -->
+                    <p class="image"><img src="images/{{img}}"></p>
+                        <p class="caption">{{caption}}</p>
+                </div>
+                <div class="side side-back">
+                    <p class="desc">{{desc}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 2.引入data.js -->
+    <script type="text/javascript" src="images/data.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+</body>
+
+</html>
